@@ -1,0 +1,435 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #f4dfc8, #c89f77);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Title */
+
+h1 {
+  color: #4b2e1f;
+  margin-bottom: 5px;
+  font-size: 52px;
+}
+
+.subtitle {
+  color: #6b4a36;
+  margin-bottom: 35px;
+  font-size: 18px;
+}
+
+/* Cabinet */
+
+.cabinet {
+  position: relative;
+  width: 560px;
+  height: 360px;
+  background: #7b4b2a;
+  border: 18px solid #5a3825;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+  cursor: pointer;
+}
+
+/* Doors */
+
+.door {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, #6f4122, #99643c);
+  z-index: 10;
+  transition: transform 1.2s ease;
+}
+
+.left-door {
+  left: 0;
+  transform-origin: left;
+}
+
+.right-door {
+  right: 0;
+  transform-origin: right;
+}
+
+.cabinet.open .left-door {
+  transform: perspective(1000px) rotateY(-115deg);
+}
+
+.cabinet.open .right-door {
+  transform: perspective(1000px) rotateY(115deg);
+}
+
+/* Bookshelf */
+
+.bookshelf {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.5s;
+}
+
+.cabinet.open .bookshelf {
+  opacity: 1;
+}
+
+/* Shelf */
+
+.shelf {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  height: 18px;
+  background: #4b2e1f;
+  border-radius: 6px;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.8s ease 0.5s;
+}
+
+.cabinet.open .shelf {
+  opacity: 1;
+}
+
+/* Books */
+
+.book {
+  width: 60px;
+  border-radius: 7px 7px 2px 2px;
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 6px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 6px 10px 18px rgba(0,0,0,0.25);
+
+  transform: translateY(50px);
+  opacity: 0;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.5s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+/* Books appear after cabinet opens */
+
+.cabinet.open .book {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cabinet.open .book:nth-child(1) {
+  transition-delay: 0.5s;
+}
+
+.cabinet.open .book:nth-child(2) {
+  transition-delay: 0.7s;
+}
+
+.cabinet.open .book:nth-child(3) {
+  transition-delay: 0.9s;
+}
+
+.cabinet.open .book:nth-child(4) {
+  transition-delay: 1.1s;
+}
+
+.cabinet.open .book:nth-child(5) {
+  transition-delay: 1.3s;
+}
+
+/* Hover fixed */
+
+.cabinet.open .book:hover {
+  transform: translateY(-22px) rotate(2deg) scale(1.04);
+  box-shadow: 8px 16px 24px rgba(0,0,0,0.35);
+  filter: brightness(1.08);
+  transition-delay: 0s;
+}
+
+/* Colors */
+
+.pink {
+  background: #bb5b77;
+  height: 220px;
+}
+
+.brown {
+  background: #87542d;
+  height: 250px;
+}
+
+.green {
+  background: #68896f;
+  height: 210px;
+}
+
+.blue {
+  background: #57728a;
+  height: 240px;
+}
+
+.purple {
+  background: #7b58a6;
+  height: 270px;
+}
+
+/* Note */
+
+.note {
+  margin-top: 40px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  width: 85%;
+  max-width: 520px;
+  padding: 28px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.note.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.note h2 {
+  color: #4b2e1f;
+  font-size: 38px;
+}
+
+.note p {
+  color: #6b4a36;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .note {
+    width: 90%;
+  }
+}
+/* Responsive */
+
+@media (max-width: 700px) {
+  body {
+    justify-content: flex-start;
+    padding: 30px 0;
+  }
+
+  h1 {
+    font-size: 32px;
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .cabinet {
+    width: 88vw;
+    height: 310px;
+    border-width: 12px;
+    transform: none;
+  }
+
+  .bookshelf {
+    gap: 7px;
+    bottom: 38px;
+  }
+
+  .book {
+    width: 42px;
+    font-size: 12px;
+    padding: 10px 4px;
+  }
+
+  .pink {
+    height: 180px;
+  }
+
+  .brown {
+    height: 205px;
+  }
+
+  .green {
+    height: 170px;
+  }
+
+  .blue {
+    height: 195px;
+  }
+
+  .purple {
+    height: 220px;
+  }
+
+  .shelf {
+    width: 80%;
+  }
+
+  .note {
+    width: 82%;
+    padding: 22px;
+    margin-top: 28px;
+  }
+
+  .note h2 {
+    font-size: 28px;
+  }
+
+  .note p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cabinet {
+    height: 285px;
+  }
+
+  .bookshelf {
+    gap: 5px;
+  }
+
+  .book {
+    width: 36px;
+    font-size: 11px;
+  }
+
+  .pink {
+    height: 160px;
+  }
+
+  .brown {
+    height: 185px;
+  }
+
+  .green {
+    height: 150px;
+  }
+
+  .blue {
+    height: 175px;
+  }
+
+  .purple {
+    height: 200px;
+  }
+}
+/* Cabinet Wood Texture */
+
+.cabinet {
+  background:
+    linear-gradient(
+      135deg,
+      #8a552f,
+      #6f4122
+    );
+}
+
+/* Door Details */
+
+.door {
+  background:
+    linear-gradient(
+      90deg,
+      #7a4827,
+      #a36a40
+    );
+
+  box-shadow:
+    inset 0 0 25px rgba(255,255,255,0.05),
+    inset 0 0 12px rgba(0,0,0,0.25);
+}
+
+/* Handles */
+
+.handle {
+  position: absolute;
+  width: 14px;
+  height: 50px;
+  background: linear-gradient(180deg, #f6d27a, #c9982f);
+  border-radius: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+
+  box-shadow:
+    inset 0 0 4px rgba(255,255,255,0.4),
+    0 2px 6px rgba(0,0,0,0.3);
+
+  transition: transform 1.2s ease;
+}
+
+.left-handle {
+  right: 18px;
+}
+
+.right-handle {
+  left: 18px;
+}
+
+/* Handle movement with doors */
+
+.cabinet.open .left-handle {
+  transform:
+    translateY(-50%)
+    perspective(1000px)
+    rotateY(-115deg);
+}
+
+.cabinet.open .right-handle {
+  transform:
+    translateY(-50%)
+    perspective(1000px)
+    rotateY(115deg);
+}
+.cabinet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 2px,
+      transparent 2px,
+      transparent 8px
+    );
+  pointer-events: none;
+}

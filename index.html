@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Books I'd Read With You</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Books I’d Pretend To Read Just To Sit With You☕</h1>
+  <p class="subtitle">Tap the cabinet to open it.</p>
+
+  <div class="cabinet" id="cabinet" onclick="openCabinet()">
+
+    <!-- Cabinet Doors -->
+    <div class="door left-door"></div>
+    <div class="door right-door"></div>
+    <div class="handle left-handle"></div>
+<div class="handle right-handle"></div>
+
+    <!-- Books -->
+    <div class="bookshelf">
+
+      <div class="book pink"
+        onclick='event.stopPropagation(); openBook("Pride & Prejudice", "You’d explain the plot passionately while I pretend I totally get it.")'>
+        The Little Prince
+      </div>
+
+      <div class="book brown"
+        onclick='event.stopPropagation(); openBook("Norwegian Wood", "You’d call it emotionally devastating and I’d just stare at you instead.")'>
+        Norwegian Wood
+      </div>
+
+      <div class="book green"
+        onclick='event.stopPropagation(); openBook("The Little Prince", "I would read this with you and pretend I am not smiling the whole time.")'>
+        The Little Prince
+      </div>
+
+      <div class="book blue"
+        onclick='event.stopPropagation(); openBook("Before the Coffee Gets Cold", "This sounds like the type of book that would make you cry quietly at 2AM.")'>
+        Before the Coffee Gets Cold
+      </div>
+
+      <div class="book purple"
+        onclick='event.stopPropagation(); openBook("Our Unwritten Chapter", "Dedicated to the girl who made me learn CSS for this.")'>
+        Our Unwritten Chapter
+      </div>
+
+    </div>
+
+    <div class="shelf"></div>
+  </div>
+
+  <!-- Message Card -->
+  <div class="note" id="note">
+    <h2 id="bookTitle">Pick a book</h2>
+    <p id="bookMessage">
+      A little message will appear here.
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
